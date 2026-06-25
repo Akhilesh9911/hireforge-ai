@@ -1,5 +1,6 @@
 package com.hireforge.hireforge_ai.user.service;
 
+import com.hireforge.hireforge_ai.security.JwtUtil;
 import com.hireforge.hireforge_ai.user.dto.RegisterRequest;
 import com.hireforge.hireforge_ai.user.dto.RegisterResponse;
 import com.hireforge.hireforge_ai.user.entity.User;
@@ -17,6 +18,9 @@ public class UserService{
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private JwtUtil jwtUtil;
+
     public RegisterResponse register(RegisterRequest request){
 
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
@@ -30,7 +34,7 @@ public class UserService{
 
         User savedUser = userRepository.save(newUser);
 
-        return new RegisterResponse(savedUser.getId(),savedUser.getName(),savedUser.getEmail());
-
+        String token = jwtUtil.generateToken(savedUser.getEmail());
+        return new RegisterResponse(savedUser.getId(), savedUser.getName(), savedUser.getEmail(), token);
     }
 }
