@@ -1,6 +1,8 @@
 package com.hireforge.hireforge_ai.user.service;
 
 import com.hireforge.hireforge_ai.security.JwtUtil;
+import com.hireforge.hireforge_ai.user.dto.LoginRequest;
+import com.hireforge.hireforge_ai.user.dto.LoginResponse;
 import com.hireforge.hireforge_ai.user.dto.RegisterRequest;
 import com.hireforge.hireforge_ai.user.dto.RegisterResponse;
 import com.hireforge.hireforge_ai.user.entity.User;
@@ -36,5 +38,18 @@ public class UserService{
 
         String token = jwtUtil.generateToken(savedUser.getEmail());
         return new RegisterResponse(savedUser.getId(), savedUser.getName(), savedUser.getEmail(), token);
+    }
+
+    public LoginResponse login(LoginRequest request) {
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException("Invalid email or password"));
+
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Invalid email or password");
+        }
+
+        String token = jwtUtil.generateToken(user.getEmail());
+
+        return new LoginResponse(user.getId(), user.getName(), user.getEmail(), token);
     }
 }

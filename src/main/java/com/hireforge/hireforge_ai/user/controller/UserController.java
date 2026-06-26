@@ -1,5 +1,7 @@
 package com.hireforge.hireforge_ai.user.controller;
 
+import com.hireforge.hireforge_ai.user.dto.LoginRequest;
+import com.hireforge.hireforge_ai.user.dto.LoginResponse;
 import com.hireforge.hireforge_ai.user.dto.RegisterRequest;
 import com.hireforge.hireforge_ai.user.dto.RegisterResponse;
 import com.hireforge.hireforge_ai.user.service.UserService;
@@ -20,6 +22,12 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(@Valid @RequestBody RegisterRequest request) {
         RegisterResponse response = userService.register(request);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
+        LoginResponse response = userService.login(request);
         return ResponseEntity.ok(response);
     }
 }
