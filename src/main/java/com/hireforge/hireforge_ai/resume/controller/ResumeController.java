@@ -21,7 +21,17 @@ public class ResumeController {
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadResume(@RequestParam("file") MultipartFile file) throws IOException, java.io.IOException {
-        String extractedText = resumeService.extractTextFromPdf(file);
+        String fileName = file.getOriginalFilename();
+        String extractedText;
+
+        if (fileName != null && fileName.toLowerCase().endsWith(".pdf")) {
+            extractedText = resumeService.extractTextFromPdf(file);
+        } else if (fileName != null && fileName.toLowerCase().endsWith(".docx")) {
+            extractedText = resumeService.extractTextFromDocx(file);
+        } else {
+            return ResponseEntity.badRequest().body("Unsupported file type. Please upload PDF or DOCX.");
+        }
+
         return ResponseEntity.ok(extractedText);
     }
 
