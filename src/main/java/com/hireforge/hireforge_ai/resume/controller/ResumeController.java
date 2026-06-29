@@ -1,5 +1,6 @@
 package com.hireforge.hireforge_ai.resume.controller;
 
+import com.hireforge.hireforge_ai.resume.service.GeminiService;
 import com.hireforge.hireforge_ai.resume.service.ResumeService;
 import io.jsonwebtoken.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class ResumeController {
     @Autowired
     private ResumeService resumeService;
 
+    @Autowired
+    private GeminiService geminiService;
+
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadResume(@RequestParam("file") MultipartFile file) throws IOException, java.io.IOException {
@@ -32,7 +36,10 @@ public class ResumeController {
             return ResponseEntity.badRequest().body("Unsupported file type. Please upload PDF or DOCX.");
         }
 
-        return ResponseEntity.ok(extractedText);
+        String analysis = geminiService.analyzeResume(extractedText);
+
+        return ResponseEntity.ok(analysis);
+
     }
 
 }
