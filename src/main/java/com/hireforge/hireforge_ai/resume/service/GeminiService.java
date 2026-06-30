@@ -28,7 +28,8 @@ public class GeminiService {
 
         GeminiRequest.Part part = new GeminiRequest.Part(prompt);
         GeminiRequest.Content content = new GeminiRequest.Content(List.of(part));
-        GeminiRequest request = new GeminiRequest(List.of(content));
+        GeminiRequest.GenerationConfig generationConfig = new GeminiRequest.GenerationConfig(0.2);
+        GeminiRequest request = new GeminiRequest(List.of(content), generationConfig);
 
         GeminiResponse response = restClient.post()
                 .uri(GEMINI_URL + "?key=" + apiKey)

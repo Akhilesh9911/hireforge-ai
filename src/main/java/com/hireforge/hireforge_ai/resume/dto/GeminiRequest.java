@@ -5,9 +5,11 @@ import java.util.List;
 public class GeminiRequest {
 
     private List<Content> contents;
+    private GenerationConfig generationConfig;
 
-    public GeminiRequest(List<Content> contents) {
+    public GeminiRequest(List<Content> contents, GenerationConfig generationConfig) {
         this.contents = contents;
+        this.generationConfig = generationConfig;
     }
 
     public List<Content> getContents() {
@@ -16,6 +18,14 @@ public class GeminiRequest {
 
     public void setContents(List<Content> contents) {
         this.contents = contents;
+    }
+
+    public GenerationConfig getGenerationConfig() {
+        return generationConfig;
+    }
+
+    public void setGenerationConfig(GenerationConfig generationConfig) {
+        this.generationConfig = generationConfig;
     }
 
     public static class Content {
@@ -47,6 +57,21 @@ public class GeminiRequest {
 
         public void setText(String text) {
             this.text = text;
+        }
+    }
+    public static class GenerationConfig {
+        private double temperature;
+
+        public GenerationConfig(double temperature) {
+            this.temperature = temperature;
+        }
+
+        public double getTemperature() {
+            return temperature;
+        }
+
+        public void setTemperature(double temperature) {
+            this.temperature = temperature;
         }
     }
 
