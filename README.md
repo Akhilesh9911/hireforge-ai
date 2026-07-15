@@ -3,6 +3,10 @@
 An AI-powered resume analyzer built with Spring Boot that helps users get ATS scores and identify missing skills from their resumes.
 
 ---
+## Live Demo
+API Base URL: `https://hireforge-ai-production.up.railway.app`
+
+---
 
 ## Features
 
