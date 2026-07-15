@@ -36,4 +36,4 @@ jobs:
           DB_PASSWORD: test
           JWT_SECRET: test_secret_key_for_ci_only_not_production
           GEMINI_API_KEY: test_key
-        run: ./mvnw clean package -DskipTests -B
+        run: ./mvnw clean package -DskipTests -Bc
