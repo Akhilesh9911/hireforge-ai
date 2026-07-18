@@ -39,8 +39,7 @@ public class InterviewService {
                 "Include: " +
                 "- 6 technical questions specific to the job role and candidate's skills " +
                 "- 4 behavioral questions based on their experience " +
-                "Format: Numbered list (1. 2. 3. etc). " +
-                "Make questions specific to the candidate's background, not generic. " +
+                "Format: Each question on a new line, numbered. Use this exact format:\n1. [question]\n2. [question]\n3. [question]\nAnd so on. " +                "Make questions specific to the candidate's background, not generic. " +
                 "Resume: " + resumeText;
 
         GeminiRequest.Part part = new GeminiRequest.Part(prompt);
