@@ -1,6 +1,0 @@
-{
-  "name": "HireForge AI",
-  "description": "AI-powered career assistant that helps students and job seekers analyze resumes, prepare for interviews, and track job applications.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
