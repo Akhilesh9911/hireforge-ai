@@ -32,15 +32,56 @@ public class InterviewService {
 
         String resumeText = extractText(file);
 
-        String prompt = "You are an expert technical interviewer with 10+ years of experience. " +
-                "Based on the candidate's resume and the job role they are applying for, " +
-                "generate 10 highly relevant interview questions. " +
-                "Job Role: " + jobRole + ". " +
-                "Include: " +
-                "- 6 technical questions specific to the job role and candidate's skills " +
-                "- 4 behavioral questions based on their experience " +
-                "Format: Each question on a new line, numbered. Use this exact format:\n1. [question]\n2. [question]\n3. [question]\nAnd so on. " +                "Make questions specific to the candidate's background, not generic. " +
-                "Resume: " + resumeText;
+        String prompt = """
+                You are an expert technical interviewer with 10+ years of experience.
+                Based on the candidate's resume and the job role below, generate exactly 10 interview questions.
+                Return your response in EXACTLY this markdown format. Do NOT add any intro or conclusion text.
+
+                ## Technical Questions
+
+                1. **[Question]**
+                   *Why asked:* [One line reason based on candidate's resume]
+
+                2. **[Question]**
+                   *Why asked:* [One line reason based on candidate's resume]
+
+                3. **[Question]**
+                   *Why asked:* [One line reason based on candidate's resume]
+
+                4. **[Question]**
+                   *Why asked:* [One line reason based on candidate's resume]
+
+                5. **[Question]**
+                   *Why asked:* [One line reason based on candidate's resume]
+
+                6. **[Question]**
+                   *Why asked:* [One line reason based on candidate's resume]
+
+                ## Behavioral Questions
+
+                7. **[Question]**
+                   *Why asked:* [One line reason based on candidate's experience]
+
+                8. **[Question]**
+                   *Why asked:* [One line reason based on candidate's experience]
+
+                9. **[Question]**
+                   *Why asked:* [One line reason based on candidate's experience]
+
+                10. **[Question]**
+                    *Why asked:* [One line reason based on candidate's experience]
+
+                ## Quick Tips for This Interview
+
+                - [Tip specific to the job role]
+                - [Tip specific to the candidate's background]
+                - [General tip]
+
+                ---
+                Job Role: """ + jobRole + """
+
+                Resume:
+                """ + resumeText;
 
         GeminiRequest.Part part = new GeminiRequest.Part(prompt);
         GeminiRequest.Content content = new GeminiRequest.Content(List.of(part));
@@ -70,5 +111,4 @@ public class InterviewService {
             throw new RuntimeException("Unsupported file type. Please upload PDF or DOCX.");
         }
     }
-
 }
