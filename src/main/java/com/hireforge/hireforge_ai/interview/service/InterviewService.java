@@ -23,7 +23,7 @@ public class InterviewService {
     private final RestClient restClient = RestClient.create();
 
     private static final String GEMINI_URL =
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
     @Autowired
     private ResumeService resumeService;
