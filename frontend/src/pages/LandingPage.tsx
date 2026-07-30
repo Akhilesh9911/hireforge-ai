@@ -169,7 +169,7 @@ export const LandingPage: React.FC = () => {
             <div className="space-y-6">
               <p className="text-xs font-bold uppercase tracking-widest text-violet-600 dark:text-violet-400">Why HireForge AI</p>
               <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-                Stop applying blindly.<br />Start applying smart.
+                Stop applying blindly.<br />Start applying smartly.
               </h2>
               <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
                 Most job seekers send the same resume everywhere and walk into interviews unprepared. HireForge gives you the insight and tools to be strategic at every step.
