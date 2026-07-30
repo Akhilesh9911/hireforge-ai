@@ -17,7 +17,7 @@ public class GeminiService {
     private final RestClient restClient = RestClient.create();
 
     private static final String GEMINI_URL =
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent";
 
     public String analyzeResume(String resumeText) {
         String prompt = """
