@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 
-const BASE_URL = 'https://hireforge-ai-production.up.railway.app/api';
+const BASE_URL = 'https://hireforge-ai-mqul.onrender.com/api';
 
 export const apiClient: AxiosInstance = axios.create({
   baseURL: BASE_URL,
