@@ -3,8 +3,11 @@
 An AI-powered resume analyzer built with Spring Boot that helps users get ATS scores and identify missing skills from their resumes.
 
 ---
+
 ## Live Demo
-API Base URL: `https://hireforge-ai-production.up.railway.app`
+
+- Backend API: `https://hireforge-ai-mqul.onrender.com`
+- Frontend: `https://your-vercel-url.vercel.app`
 
 ---
 
@@ -119,6 +122,14 @@ The server starts on `http://localhost:8080`
 | `DB_PASSWORD` | MySQL database password |
 | `JWT_SECRET` | Secret key for JWT signing (min 32 characters) |
 | `GEMINI_API_KEY` | Google Gemini API key |
+
+---
+
+## Related Repository
+
+This is the monolith version of HireForge AI. The same application has been re-architected into a microservices-based backend.
+
+- Microservices GitHub: [github.com/Akhilesh9911/hireforge-ai-microservices](https://github.com/Akhilesh9911/hireforge-ai-microservices)
 
 ---
 
