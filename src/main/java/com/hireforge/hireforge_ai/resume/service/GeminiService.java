@@ -15,7 +15,6 @@ public class GeminiService {
     private String apiKey;
 
     private final RestClient restClient = RestClient.create();
-
     private static final String GEMINI_URL =
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent";
 
