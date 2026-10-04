@@ -1,6 +1,9 @@
 import axios, { AxiosInstance } from 'axios';
 
-const BASE_URL = 'http://localhost:8080/api';
+// const BASE_URL = 'http://localhost:8080/api';
+
+const BASE_URL = 'https://hireforge-ai-mqul.onrender.com/api';
+
 export const apiClient: AxiosInstance = axios.create({
   baseURL: BASE_URL,
   headers: {
