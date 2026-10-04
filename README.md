@@ -1,14 +1,14 @@
 # HireForge AI
 
-An AI-powered resume analyzer built with Spring Boot that helps users get ATS scores and identify missing skills from their resumes.
+An AI-powered career platform built with Spring Boot and React that helps users analyze resumes, track job applications, and generate interview questions using Google Gemini AI.
 
 ---
 
 ## Live Demo
 
-- Backend API: `https://hireforge-ai-mqul.onrender.com`
-- Frontend: `https://your-vercel-url.vercel.app`
-
+- **Frontend:** [https://hireforge-ai-git.vercel.app](https://hireforge-ai-git.vercel.app)
+- **Backend API:** [https://hireforge-ai-mqul.onrender.com](https://hireforge-ai-mqul.onrender.com)
+  
 ---
 
 ## Features
@@ -18,6 +18,8 @@ An AI-powered resume analyzer built with Spring Boot that helps users get ATS sc
 - Resume upload support for PDF and DOCX formats
 - Text extraction using Apache PDFBox and Apache POI
 - AI-powered ATS scoring and missing skills analysis via Google Gemini API
+- AI-powered interview question generation based on resume and job role
+- Job application tracker with status management
 - Global exception handling with clean JSON error responses
 - Protected endpoints secured with Spring Security filter chain
 
@@ -28,13 +30,21 @@ An AI-powered resume analyzer built with Spring Boot that helps users get ATS sc
 | Layer | Technology |
 |---|---|
 | Language | Java 17 |
-| Framework | Spring Boot 4.x |
+| Framework | Spring Boot 3.3.5 |
 | Security | Spring Security + JWT (jjwt) |
 | ORM | Spring Data JPA + Hibernate |
 | Database | MySQL |
 | File Parsing | Apache PDFBox 3.0.3, Apache POI 5.3.0 |
 | AI Integration | Google Gemini API (gemini-2.5-flash) |
 | Build Tool | Maven |
+
+### Frontend
+| Layer | Technology |
+|---|---|
+| Framework | React 18 + Vite |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| HTTP Client | Axios |
 
 ---
 
@@ -111,6 +121,19 @@ The server starts on `http://localhost:8080`
 | Method | Endpoint | Description | Auth Required |
 |---|---|---|---|
 | POST | `/api/resume/upload` | Upload PDF/DOCX resume for AI analysis | Yes (Bearer token) |
+
+### Interview
+| Method | Endpoint | Description | Auth Required |
+|---|---|---|---|
+| POST | `/api/interview/generate` | Generate interview questions from resume | Yes |
+
+### Job Tracker
+| Method | Endpoint | Description | Auth Required |
+|---|---|---|---|
+| POST | `/api/jobs` | Add job application | Yes |
+| GET | `/api/jobs` | Get all job applications | Yes |
+| PATCH | `/api/jobs/{id}/status` | Update application status | Yes |
+| DELETE | `/api/jobs/{id}` | Delete job application | Yes |
 
 ---
 
